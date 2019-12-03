@@ -51,7 +51,7 @@ def get_message():
 @server.route("/")
 def web_hook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://telegram-bot-s.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url='https://telegram-work-notifier-bot.herokuapp.com/' + TOKEN)
     return "CONNECTED", 200
 
 
