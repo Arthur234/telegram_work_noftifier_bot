@@ -3,12 +3,12 @@ import time
 
 import telebot
 
-from credentials import TOKEN
 from flask import Flask, request
 from utils.get_vacancies import get_vacancies
 from utils.create_message import create_message
 
 
+TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(token=TOKEN)
 server = Flask(__name__)
 
