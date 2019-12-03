@@ -5,7 +5,7 @@ from flask import Flask, request
 # from telegram_bot import keyboard
 from credentials import TOKEN
 
-token = TOKEN
+token = '1031805557:AAFIqQDWn5Wy5yr25Jx4Z5qWWEM5RNd4L54'
 server = Flask(__name__)
 bot = telebot.TeleBot(token)
 
