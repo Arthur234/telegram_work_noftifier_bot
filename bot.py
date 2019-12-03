@@ -8,7 +8,6 @@ from flask import Flask, request
 from utils.get_vacancies import get_vacancies
 from utils.create_message import create_message
 
-TOKEN = '996680656:AAEyecvkOAewCP4Qbmmyuxeg7Xruyeh9a1U'
 
 bot = telebot.TeleBot(token=TOKEN)
 server = Flask(__name__)
