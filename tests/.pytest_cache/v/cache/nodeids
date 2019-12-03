@@ -1,0 +1,6 @@
+[
+  "test_parse_workua.py::TestWorkUaParser::test_parsing",
+  "test_parse_rabotaua.py::TestRabotaUaParser::test_parsing",
+  "test_parse_djinni.py::TestRabotaUaParser::test_parsing",
+  "test_create_message.py::TestMessage::test_message_creation"
+]
