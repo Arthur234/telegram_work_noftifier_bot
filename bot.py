@@ -15,7 +15,6 @@ server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def main_menu(message):
-    print(message)
     bot.send_message(message.from_user.id, 'Выберите группу:')
 
 
