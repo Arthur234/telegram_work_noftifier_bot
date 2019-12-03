@@ -1,5 +1,5 @@
 class Vacancy:
-    def __init__(self, title: str, company: str, link: str, date):
+    def __init__(self, title: str, company: str, link: str, date=None):
         self.title = title
         self.company = company
         self.date = date
