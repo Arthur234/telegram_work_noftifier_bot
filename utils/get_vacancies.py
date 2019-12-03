@@ -12,7 +12,7 @@ def start_parser(parser):
 
 
 def get_vacancies(search_query):
-    parsers = [WorkUaParser, HHParser, DjinniParser]
+    parsers = [WorkUaParser, HHParser, DjinniParser, RabotaUaParser]
     parsers = [parser(search_query) for parser in parsers]
 
     with ThreadPoolExecutor(max_workers=4) as executor:

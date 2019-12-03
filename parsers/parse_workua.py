@@ -39,14 +39,14 @@ class WorkUaParser(Parser):
         if date.startswith('Вчера'):
             days_before = 1
         else:
-            number, day_or_week = date.split('\xa0')[:2]
+            number, definition = date.split('\xa0')[:2]
             number = int(number)
 
-            if day_or_week.startswith('дня'):
+            if definition.startswith('дня'):
                 days_before = number
-            elif day_or_week.startswith('нед'):
+            elif definition.startswith('нед'):
                 days_before = number * 7
-            elif day_or_week.startswith('ч'):
+            elif definition.startswith('ч'):
                 hours_before = number
 
         return datetime.date.today() - datetime.timedelta(days=days_before, hours=hours_before)

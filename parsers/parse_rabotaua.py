@@ -1,3 +1,5 @@
+import datetime
+
 from parsers.parser import Parser
 from constants import RABOTAUA_URL
 from vacancy import Vacancy
@@ -19,12 +21,35 @@ class RabotaUaParser(Parser):
                 'class': 'f-text-dark-bluegray f-visited-enable'
             }).get_text().strip()
 
-            vacancy = Vacancy(title=title, link=link, company=company)
+            try:
+                date = item.find('p', {'class': 'f-vacancylist-agotime f-text-light-gray fd-craftsmen'}).get_text()
+                date = self._transform_date(date)
+            except AttributeError:
+                date = datetime.date.today()
+
+            vacancy = Vacancy(title=title, link=link, company=company, date=date)
             self.vacancies.append(vacancy)
 
         return self.vacancies
 
+    @staticmethod
+    def _transform_date(date: str) -> datetime.date:
+        days_before = 0
+        hours_before = 0
+
+        number, definition = date.split('\xa0')[:2]
+        number = int(number)
+
+        if definition.startswith('час'):
+            hours_before = number
+        elif definition.startswith('д'):
+            days_before = number
+        elif definition.startswith('н'):
+            days_before = number * 7
+
+        return datetime.date.today() - datetime.timedelta(days=days_before, hours=hours_before)
+
 
 if __name__ == '__main__':
-    vacancies = RabotaUaParser().parse()
+    vacancies = RabotaUaParser('Python').parse()
     print(vacancies)

@@ -1,3 +1,4 @@
+import datetime
 from typing import Dict
 
 import requests
@@ -15,5 +16,9 @@ class Parser:
         return BeautifulSoup(page.content, 'html.parser')
 
     def parse(self):
+        pass
+
+    @staticmethod
+    def _transform_date(date: str) -> datetime.date:
         pass
 

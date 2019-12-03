@@ -28,3 +28,7 @@ class DjinniParser(Parser):
             self.vacancies.append(vacancy)
 
         return self.vacancies
+
+
+if __name__ == '__main__':
+    print(DjinniParser('python').parse())
