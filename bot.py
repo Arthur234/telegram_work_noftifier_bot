@@ -32,7 +32,7 @@ def get_vacancy(message):
     for msg in message.split('\n\n'):
         if msg:
             time.sleep(0.5)
-            bot.send_message(chat_id, msg)
+            bot.send_message(chat_id, msg, disable_web_page_preview=True)
 
 
 @server.route('/' + TOKEN, methods=['POST'])
