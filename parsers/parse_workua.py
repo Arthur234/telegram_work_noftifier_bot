@@ -1,3 +1,5 @@
+import datetime
+
 from parsers.parser import Parser
 from constants import WORKUA_URL
 from vacancy import Vacancy
@@ -16,13 +18,28 @@ class WorkUaParser(Parser):
             title = card.find('h2').find('a').get_text()
             link = 'https://www.work.ua' + card.find('h2').find('a')['href']
             company = card.find('div', {'class': 'add-top-xs'}).find('span').get_text()
+            date = card.find('span', {'class': 'text-muted small'}).get_text()
+            date = self._transform_date(date)
 
-            vacancy = Vacancy(title=title, company=company, link=link)
+            vacancy = Vacancy(title=title, company=company, link=link, date=date)
             self.vacancies.append(vacancy)
 
         return self.vacancies
 
+    @staticmethod
+    def _transform_date(date: str) -> datetime.date:
+        number, day_or_week = date.split('\xa0')[:2]
+        number = int(number)
+
+        days_before = 0
+        if day_or_week.startswith('дня'):
+            days_before = number
+        elif day_or_week.startswith('нед'):
+            days_before = number * 7
+
+        return datetime.date.today() - datetime.timedelta(days=days_before)
+
 
 if __name__ == '__main__':
-    vacancies = WorkUaParser().parse()
+    vacancies = WorkUaParser('python').parse()
     print(vacancies)
