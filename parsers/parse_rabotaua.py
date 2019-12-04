@@ -10,7 +10,7 @@ class RabotaUaParser(Parser):
         super().__init__(search_query)
 
     def parse(self):
-        soup = self.get_page_content(RABOTAUA_URL.format(self.search_query))
+        soup = self.get_page_content_not_verified(RABOTAUA_URL.format(self.search_query))
         items = soup.findAll('article', {'class': 'f-vacancylist-vacancyblock'})
 
         for item in items:
