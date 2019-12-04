@@ -42,12 +42,10 @@ class DjinniParser(Parser):
 
         before_days = 0
 
-        if date.startswith('сьог'):
-            before_days = 0
-        elif date.startswith('вчора'):
+        if date.startswith('вчора'):
             before_days = 1
         elif date[0].isdigit():
-            return datetime.datetime.strptime(date, '%d %B').date()
+            pass
 
         return datetime.date.today() - datetime.timedelta(days=before_days)
 
