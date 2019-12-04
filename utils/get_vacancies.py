@@ -21,6 +21,7 @@ def get_vacancies(search_query):
     vacancies = []
     for nested in data:
         for vacancy in nested:
+            print(vacancy)
             vacancies.append(vacancy)
 
     return vacancies
