@@ -9,7 +9,7 @@ from vacancy import Vacancy
 class HHParser(Parser):
     def __init__(self, search_query):
         super().__init__(search_query)
-        locale.setlocale(locale.LC_ALL, ('RU', 'UTF8'))
+
 
     def parse(self):
         soup = self.get_page_content(HH_URL.format(self.search_query))
@@ -37,6 +37,8 @@ class HHParser(Parser):
 
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
+        locale.setlocale(locale.LC_ALL, ('RU', 'UTF8'))
+
         date = date.replace('\xa0', ' ')
         date = datetime.datetime.strptime(date, '%d %B').date()
         date = date.replace(year=datetime.date.today().year)
