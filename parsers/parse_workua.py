@@ -53,5 +53,5 @@ class WorkUaParser(Parser):
 
 
 if __name__ == '__main__':
-    vacancies = WorkUaParser('Менеджер').parse()
-    print(vacancies)
+    vacancies = WorkUaParser('Python').parse()
+    # print(vacancies)
