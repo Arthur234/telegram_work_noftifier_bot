@@ -27,6 +27,7 @@ def get_vacancy(message):
     bot.send_message(chat_id, 'Ищем...')
 
     vacancies = get_vacancies(message.text)
+    print(vacancies)
     message = create_message(vacancies)
 
     for msg in message.split('\n\n'):
