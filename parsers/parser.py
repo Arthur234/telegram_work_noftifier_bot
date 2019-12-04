@@ -16,7 +16,7 @@ class Parser:
         return BeautifulSoup(page.content, 'html.parser')
 
     def get_page_content_not_verified(self, url: str):
-        page = requests.get(url, verify=False, headers=self.headers)
+        page = requests.get(url, verify=False)
         return BeautifulSoup(page.content, 'html.parser')
 
     def parse(self):
