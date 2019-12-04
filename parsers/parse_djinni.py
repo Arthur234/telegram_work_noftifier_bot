@@ -27,6 +27,8 @@ class DjinniParser(Parser):
             except IndexError as e:
                 company = company.split('-')[-1][:-1]
 
+
+
             vacancy = Vacancy(title=title, company=company, link=link)
             self.vacancies.append(vacancy)
 
