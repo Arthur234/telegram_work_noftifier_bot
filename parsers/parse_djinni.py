@@ -27,16 +27,29 @@ class DjinniParser(Parser):
             except IndexError as e:
                 company = company.split('-')[-1][:-1]
 
+            date = item.find('div', {'class': 'inbox-date pull-right'}).get_text().strip()
+            date = self._transform_date(date)
 
-
-            vacancy = Vacancy(title=title, company=company, link=link)
+            vacancy = Vacancy(title=title, company=company, link=link, date=date)
             self.vacancies.append(vacancy)
 
         return self.vacancies
 
+    @staticmethod
     def _transform_date(date: str) -> datetime.date:
         locale.setlocale(locale.LC_ALL, ('UK', 'UTF8'))
+        date = date.replace('\xa0', ' ')
+        before_days = 0
+
+        if date.startswith('сьог'):
+            before_days = 0
+        elif date.startswith('вчора'):
+            before_days = 1
+        elif date[0].isdigit():
+            return datetime.datetime.strptime(date, '%d %B').date()
+
+        return datetime.date.today() - datetime.timedelta(days=before_days)
 
 
 if __name__ == '__main__':
-    print(DjinniParser('python').parse())
+    print(DjinniParser('product manager').parse())
