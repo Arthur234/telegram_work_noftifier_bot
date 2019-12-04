@@ -38,10 +38,9 @@ class DjinniParser(Parser):
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
         locale.setlocale(locale.LC_ALL, ('UK', 'UTF8'))
-        date = date.encode('utf8')
-        date = date.decode('utf8')
-
+        date = date.replace('\xa0', ' ')
         print(date)
+
         before_days = 0
 
         if date.startswith('сьог'):
@@ -49,6 +48,7 @@ class DjinniParser(Parser):
         elif date.startswith('вчора'):
             before_days = 1
         elif date[0].isdigit():
+            print(date)
             return datetime.datetime.strptime(date, '%d %B').date()
 
         return datetime.date.today() - datetime.timedelta(days=before_days)
