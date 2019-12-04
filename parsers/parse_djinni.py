@@ -38,7 +38,10 @@ class DjinniParser(Parser):
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
         locale.setlocale(locale.LC_ALL, ('UK', 'UTF8'))
-        date = date.replace('\xa0', ' ')
+        date = date.encode('utf8')
+        date = date.decode('utf8')
+
+        print(date)
         before_days = 0
 
         if date.startswith('сьог'):

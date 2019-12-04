@@ -27,4 +27,4 @@ def get_vacancies(search_query):
 
 
 if __name__ == '__main__':
-    print(get_vacancies('Python'))
+    print(get_vacancies('Trainee'))
