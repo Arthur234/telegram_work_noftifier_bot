@@ -46,4 +46,4 @@ class HHParser(Parser):
 
 
 if __name__ == '__main__':
-    print(HHParser('python').parse())
+    print(HHParser('Python').parse())
