@@ -11,7 +11,7 @@ class Parser:
         self.vacancies = []
 
     def get_page_content(self, url: str):
-        page = requests.get(url)
+        page = requests.get(url, verify=False)
         return BeautifulSoup(page.content, 'html.parser')
 
     def parse(self):
