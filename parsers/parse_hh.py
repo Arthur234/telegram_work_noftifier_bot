@@ -10,7 +10,6 @@ class HHParser(Parser):
     def __init__(self, search_query):
         super().__init__(search_query)
 
-
     def parse(self):
         soup = self.get_page_content(HH_URL.format(self.search_query))
 
