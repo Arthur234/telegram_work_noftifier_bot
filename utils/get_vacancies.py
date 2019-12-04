@@ -1,3 +1,4 @@
+import operator
 from concurrent.futures.thread import ThreadPoolExecutor
 
 from parsers.parse_workua import WorkUaParser
@@ -23,6 +24,9 @@ def get_vacancies(search_query):
         for vacancy in nested:
             vacancies.append(vacancy)
 
+    vacancies.sort(key=lambda x: x.date, reverse=True)
+
+    print(vacancies)
     return vacancies
 
 
