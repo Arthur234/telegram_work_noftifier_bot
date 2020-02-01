@@ -1,0 +1,1 @@
+from parsers.freelance_parsers.freelanceua_parser import FreelanceUaParser

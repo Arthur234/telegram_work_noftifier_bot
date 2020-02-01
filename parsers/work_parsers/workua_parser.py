@@ -2,7 +2,7 @@ import datetime
 
 from parsers.parser import Parser
 from constants import WORKUA_URL
-from work_vacancy import Vacancy
+from queries.vacancy import Vacancy
 
 
 class WorkUaParser(Parser):

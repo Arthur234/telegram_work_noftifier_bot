@@ -3,7 +3,7 @@ import locale
 
 from parsers.parser import Parser
 from constants import DJINNI_URL
-from work_vacancy import Vacancy
+from queries.vacancy import Vacancy
 
 
 class DjinniParser(Parser):

@@ -3,7 +3,7 @@ import locale
 
 from parsers.parser import Parser
 from constants import HH_URL
-from work_vacancy import Vacancy
+from queries.vacancy import Vacancy
 
 
 class HHParser(Parser):

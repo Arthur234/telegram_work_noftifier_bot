@@ -1,6 +1,6 @@
 import datetime
 
-from freelance_project import Project
+from queries.project import Project
 from parsers.parser import Parser
 from constants import FREELANCEUA_URL
 
@@ -29,8 +29,22 @@ class FreelanceUaParser(Parser):
 
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
-        days_before = 1 if date.startswith('вчера') \
-            else 30 * int(date.split(' ')[0])
+        # days_before = 1 if date.startswith('вч') else \
+        #         int(date.split(' ')[0]) if date.startswith('дня') \
+        #         else 30 * int(date.split(' ')[0])
+        days_before = 0
+
+        try:
+            number, definition = date.split(' ')[:2]
+        except ValueError:
+            definition = date
+
+        if definition.startswith('вчера'):
+            days_before = 1
+        elif definition.startswith('дн'):
+            days_before = int(number)
+        elif definition.startswith('мес'):
+            days_before = int(number) * 30
 
         return datetime.date.today() - datetime.timedelta(days=days_before)
 
