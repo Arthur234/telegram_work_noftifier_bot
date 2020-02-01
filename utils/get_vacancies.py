@@ -26,7 +26,6 @@ def get_vacancies(search_query):
 
     vacancies.sort(key=lambda x: x.date, reverse=True)
 
-    print(vacancies)
     return vacancies
 
 

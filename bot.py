@@ -2,31 +2,34 @@ import os
 import time
 
 import telebot
+from flask import Flask
 
-from flask import Flask, request
 from utils.get_vacancies import get_vacancies
 from utils.create_message import create_message
+from credentials import token
 
 
-TOKEN = os.environ.get('TOKEN')
-bot = telebot.TeleBot(token=TOKEN)
-server = Flask(__name__)
+bot = telebot.TeleBot(token=token)
 
 
 @bot.message_handler(commands=['start'])
-def send_welcome(message):
+def send_instructions(message):
+    # TODO: create instructions
+    pass
+
+
+@bot.message_handler(commands=['find'])
+def find_work(message):
     chat_id = message.chat.id
-    print(chat_id)
+    work_find_request = ' '.join(message.text.split(' ')[1:])
 
-    msg = bot.send_message(chat_id, 'Введите название вакансии')
-    bot.register_next_step_handler(msg, get_vacancy)
+    if not work_find_request:
+        bot.send_message(chat_id, 'Не понимаю, введите правильный запрос')
+        return
 
-
-def get_vacancy(message):
-    chat_id = message.chat.id
     bot.send_message(chat_id, 'Ищем...')
 
-    vacancies = get_vacancies(message.text)
+    vacancies = get_vacancies(work_find_request)
     message = create_message(vacancies)
 
     for msg in message.split('\n\n'):
@@ -35,18 +38,4 @@ def get_vacancy(message):
             bot.send_message(chat_id, msg, disable_web_page_preview=True, parse_mode='markdown')
 
 
-@server.route('/' + TOKEN, methods=['POST'])
-def get_message():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "POST", 200
-
-
-@server.route("/")
-def web_hook():
-    bot.remove_webhook()
-    bot.set_webhook(url='https://telegram-work-notifier-bot.herokuapp.com/' + TOKEN)
-    return "CONNECTED", 200
-
-
-if __name__ == '__main__':
-    server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+bot.polling()

@@ -2,7 +2,7 @@ import datetime
 import locale
 
 from parsers.parser import Parser
-from constants import HH_URL
+from config import HH_URL
 from vacancy import Vacancy
 
 
@@ -20,7 +20,7 @@ class HHParser(Parser):
             title = item.find('a', {'class': 'bloko-link HH-LinkModifier'}).get_text()
             link = item.find('a', {'class': 'bloko-link HH-LinkModifier'})['href']
             company = item.find('a', {
-                'class': 'bloko-link bloko-link_secondary HH-AnonymousIndexAnalytics-Recommended-Company'
+                'class': 'bloko-link bloko-link_secondary'
             }).get_text()
 
             try:

@@ -6,8 +6,6 @@ itsdangerous==0.24
 Jinja2==2.10
 kiwisolver==1.0.1
 MarkupSafe==1.0
-matplotlib==3.0.0
-numpy==1.15.2
 pyparsing==2.2.2
 pyTelegramBotAPI==3.6.6
 python-dateutil==2.7.3

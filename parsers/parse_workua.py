@@ -1,7 +1,7 @@
 import datetime
 
 from parsers.parser import Parser
-from constants import WORKUA_URL
+from config import WORKUA_URL
 from vacancy import Vacancy
 
 

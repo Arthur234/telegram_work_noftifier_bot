@@ -2,7 +2,7 @@ import datetime
 import locale
 
 from parsers.parser import Parser
-from constants import DJINNI_URL
+from config import DJINNI_URL
 from vacancy import Vacancy
 
 

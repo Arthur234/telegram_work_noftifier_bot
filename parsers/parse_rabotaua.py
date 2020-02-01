@@ -1,7 +1,7 @@
 import datetime
 
 from parsers.parser import Parser
-from constants import RABOTAUA_URL
+from config import RABOTAUA_URL
 from vacancy import Vacancy
 
 
