@@ -4,8 +4,8 @@ import time
 import telebot
 from flask import Flask
 
-from utils.get_vacancies import get_vacancies
-from utils.create_message import create_message
+from utils import get_vacancies
+from utils import create_message
 from credentials import token
 
 

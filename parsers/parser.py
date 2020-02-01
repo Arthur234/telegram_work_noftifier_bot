@@ -18,9 +18,6 @@ class Parser:
         page = requests.get(url, verify=False, headers=self.headers)
         return BeautifulSoup(page.content, 'html.parser')
 
-    def parse(self):
-        pass
-
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
         pass
