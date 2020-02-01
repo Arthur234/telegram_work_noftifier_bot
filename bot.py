@@ -1,8 +1,6 @@
-import os
 import time
 
 import telebot
-from flask import Flask
 
 from utils import get_vacancies
 from utils import create_message
@@ -36,6 +34,11 @@ def find_work(message):
         if msg:
             time.sleep(0.5)
             bot.send_message(chat_id, msg, disable_web_page_preview=True, parse_mode='markdown')
+
+
+@bot.message_handler(commands=['freelance'])
+def find_freelance_work(message):
+    chat_id = message.chat.id
 
 
 bot.polling()

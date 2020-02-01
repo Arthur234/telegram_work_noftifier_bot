@@ -1,5 +1,5 @@
 import unittest
-from parsers.parse_workua import WorkUaParser
+from parsers.work_parsers.workua_parser import WorkUaParser
 
 
 class TestWorkUaParser(unittest.TestCase):

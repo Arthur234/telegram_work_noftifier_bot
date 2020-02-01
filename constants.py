@@ -1,0 +1,10 @@
+WORKUA_URL = 'https://www.work.ua/ru/jobs-dnipro-{}'
+HH_URL = 'https://dnepr.hh.ua/search/vacancy?currency_code=UAH&text={}&area=117'
+DJINNI_URL = 'https://djinni.co/jobs/?keywords={}&location=Днепр'
+RABOTAUA_URL = 'https://rabota.ua/zapros/{}/днепропетровск'
+
+FREELANCEUA_URL = 'https://freelance.ua/?q={}'
+FREELANCHUNT_URL = 'https://freelancehunt.com/projects?name={}'
+FLRU_URL = 'https://www.fl.ru/search/?action=search&type=projects&search_string={}'
+FREELANCERCOM_URL = 'https://www.freelancer.com.ru/jobs/?keyword={}'
+WEBLANCER_URL = 'https://www.weblancer.net/jobs/?action=search&keywords={}'

@@ -1,8 +1,8 @@
 import datetime
 
 from parsers.parser import Parser
-from config import RABOTAUA_URL
-from vacancy import Vacancy
+from constants import RABOTAUA_URL
+from work_vacancy import Vacancy
 
 
 class RabotaUaParser(Parser):

@@ -1,16 +1,12 @@
 from typing import List
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from vacancy import Vacancy
-from parsers.parse_workua import WorkUaParser
-from parsers.parse_rabotaua import RabotaUaParser
-from parsers.parse_hh import HHParser
-from parsers.parse_djinni import DjinniParser
+from work_vacancy import Vacancy
+import parsers.work_parsers as wp
 
 
 def create_message(vacancies: List[Vacancy]) -> str:
     message = ''
-
     for vacancy in vacancies:
         message += f'*{vacancy.date}*\n' \
                    f'*{vacancy.company}*: [{vacancy.title}]({vacancy.link})\n\n'
@@ -24,7 +20,7 @@ def start_parser(parser):
 
 def get_vacancies(search_query):
     parsers = [parser(search_query) for parser in
-               [WorkUaParser, RabotaUaParser, HHParser, DjinniParser]]
+               [wp.WorkUaParser, wp.RabotaUaParser, wp.HHParser, wp.DjinniParser]]
 
     with ThreadPoolExecutor(max_workers=4) as executor:
         data = executor.map(start_parser, parsers)

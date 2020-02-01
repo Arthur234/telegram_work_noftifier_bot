@@ -1,6 +1,6 @@
 import unittest
 
-from parsers.parse_djinni import DjinniParser
+from parsers.work_parsers.djinni_parser import DjinniParser
 
 
 class TestRabotaUaParser(unittest.TestCase):

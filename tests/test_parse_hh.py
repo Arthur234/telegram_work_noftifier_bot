@@ -1,6 +1,6 @@
 import unittest
 
-from parsers.parse_hh import HHParser
+from parsers.work_parsers.hh_parser import HHParser
 
 
 class TestRabotaUaParser(unittest.TestCase):

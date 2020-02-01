@@ -1,7 +1,7 @@
 import unittest
 
 from utils.create_message import create_message
-from vacancy import Vacancy
+from work_vacancy import Vacancy
 
 
 class TestMessage(unittest.TestCase):

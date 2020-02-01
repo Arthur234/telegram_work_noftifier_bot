@@ -1,6 +1,6 @@
 import unittest
 
-from parsers.parse_rabotaua import RabotaUaParser
+from parsers.work_parsers.rabotaua_parser import RabotaUaParser
 
 
 class TestRabotaUaParser(unittest.TestCase):

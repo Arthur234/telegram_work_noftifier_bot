@@ -4,6 +4,7 @@ class Vacancy:
         self.company = company
         self.date = date
         self.link = link
+        self.provider = None
 
     def __repr__(self):
         return f'Vacancy(' \
