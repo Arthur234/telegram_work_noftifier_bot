@@ -49,7 +49,7 @@ def find_freelance(message):
     bot.send_message(chat_id, 'Ищем...')
 
     vacancies = get_queried_data(freelance_find_request,
-                                 [fp.FreelanceUaParser])
+                                 [fp.FreelanceUaParser, fp.FreelanceHuntParser])
     message = create_freelance_message(vacancies)
 
     for msg in message.split('\n\n'):

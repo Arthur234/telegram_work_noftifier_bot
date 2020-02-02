@@ -29,9 +29,6 @@ class FreelanceUaParser(Parser):
 
     @staticmethod
     def _transform_date(date: str) -> datetime.date:
-        # days_before = 1 if date.startswith('вч') else \
-        #         int(date.split(' ')[0]) if date.startswith('дня') \
-        #         else 30 * int(date.split(' ')[0])
         days_before = 0
 
         try:

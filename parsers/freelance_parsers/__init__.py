@@ -1,1 +1,2 @@
 from parsers.freelance_parsers.freelanceua_parser import FreelanceUaParser
+from parsers.freelance_parsers.freelancehunt_parser import FreelanceHuntParser
